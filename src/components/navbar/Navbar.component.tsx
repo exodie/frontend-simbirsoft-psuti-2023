@@ -2,7 +2,7 @@
 import { FC } from "react";
 
 // styles
-import { Tooltip, Typography } from "antd";
+import { Typography } from "antd";
 import "./styles/navbar.scss";
 
 // store
