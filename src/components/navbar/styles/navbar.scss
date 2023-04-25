@@ -1,0 +1,9 @@
+.navbar {
+  display: grid;
+  align-items: center;
+
+  &-navigation {
+    display: grid;
+    margin: 0 5px 5px 5px;
+  }
+}
