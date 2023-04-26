@@ -10,6 +10,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@ant-design/pro-layout": "^7.12.2",
     "antd": "^5.4.5",
     "dotenv": "^16.0.3",
     "ky": "^0.33.3",

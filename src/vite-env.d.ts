@@ -1,37 +1,50 @@
 /// <reference types="vite/client" />
 
 declare global {
+    /**
+     * For context.provider interfaces data props
+     */
     type StoreContextProps = {
         currentPage: "competitions" | "teams" | "matches" | "calendar";
     }
 
     type CurrentPageProps = "competitions" | "teams" | "matches" | "calendar";
 
+    /**
+     * For context.provider props
+     */
     interface IStoreContext {
         data: StoreContextProps;
         setPage: (page: CurrentPageProps) => void;
     }
 
+    type AreaProps = {
+        id: number;
+        name: string;
+        code: string;
+        flag: string;
+    }
+
+    /**
+     * Req. props data
+     */
     type CompetitionProps = {
         count: number;
         competitions: [{
             id: number;
-            area: {
-                id: number;
-                name: string;
-                code: string;
-                flag: string;
-            };
+            area: AreaProps;
             name: string;
             code: string;
             type: string;
             emblem: string;
             plan: string;
-        }]
+        }];
     }
 
+    /**
+     * Req. props data
+     */
     type TeamProps = {
-        count: number;
         teams: [{
             id: number;
             name: string;
@@ -43,16 +56,14 @@ declare global {
             founded: number;
             clubColors: string;
             venue: string;
-        }]
+        }];
     }
 
+    /**
+     * Req. props data
+     */
     type MatchesProps = {
-        area: {
-            id: number;
-            name: string;
-            code: string;
-            flag: string;
-        };
+        area: AreaProps;
         competition: {
             id: number;
             name: string;
@@ -94,6 +105,19 @@ declare global {
             name: string;
             type: string;
             nationality: string;
+        }]
+    }
+
+    /**
+     * Для отображения списка комманд
+     */
+    type CompetitionTeamsProps = {
+        teams: [{
+            id: number;
+            name: string;
+            tla: string;
+            crest: string;
+            founded: number;
         }]
     }
 }

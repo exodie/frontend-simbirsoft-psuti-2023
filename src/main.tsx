@@ -13,6 +13,7 @@ import "./index.scss";
 // routers
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { StoreProvider } from "./store/providers/store.provider.tsx";
+import { ChoiceCompetition } from "./components/table/pages/ChoiceCompetition.component.tsx";
 
 ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
   <React.StrictMode>
@@ -20,7 +21,6 @@ ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
       <BrowserRouter>
         <Routes>
           <Route path="*" element={<Application />} />
-          <Route path="/table/league" element={<MainTable type="league" />} />
           <Route
             path="/table/competitions"
             element={<MainTable type="competitions" />}
@@ -36,6 +36,10 @@ ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
           <Route
             path="/calendar/competitions"
             element={<MainCalendar type="competitions" />}
+          />
+          <Route
+            path="/table/choice/competition/:id"
+            element={<ChoiceCompetition />}
           />
         </Routes>
       </BrowserRouter>

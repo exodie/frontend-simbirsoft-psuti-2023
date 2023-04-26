@@ -1,13 +1,15 @@
+// lib
 import { FC } from "react";
+
+// components
 import { Navbar } from "./components/navbar/Navbar.component";
-import { getCompetitions } from "./api/api";
+import { MainTable } from "./components/table/Table.component";
 
 const Application: FC = () => {
   return (
     <>
       <Navbar />
-      app: {import.meta.env.VITE_API_TOKEN || "none_token"}
-      <button onClick={getCompetitions}>get</button>
+      <MainTable type="competitions" />
     </>
   );
 };

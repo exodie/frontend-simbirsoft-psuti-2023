@@ -34,3 +34,13 @@ export const getMatches = async () => {
 
     return data;
 }
+
+export const getTeamsFromCompetitions = async (id: number) => {
+    const data: CompetitionTeamsProps = await ky.get(`${API_URL}/competitions/${id}/teams`, {
+        headers: {
+            "X-Auth-Token": import.meta.env.VITE_API_TOKEN
+        }
+    }).json()
+
+    return data.teams;
+}
