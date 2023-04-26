@@ -48,7 +48,7 @@ export const CommandsTable: FC = () => {
               <Card
                 onClick={(e) => {
                   e.preventDefault();
-                  navigate(`/table/choice/competition/${item?.id}`, {
+                  navigate(`/table/choice/command/${item?.id}`, {
                     replace: true,
                     state: item,
                   });
