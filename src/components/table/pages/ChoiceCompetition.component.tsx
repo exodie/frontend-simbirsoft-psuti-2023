@@ -3,7 +3,7 @@ import { FC, useEffect, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 
 // styles
-import { Descriptions, Avatar, Row, Col, Table } from "antd";
+import { Descriptions, Avatar, Row, Col, Table, Typography } from "antd";
 import { PageHeader } from "@ant-design/pro-layout";
 import { getTeamsFromCompetitions } from "../../../api/api";
 
@@ -43,11 +43,14 @@ export const ChoiceCompetition: FC = () => {
   const modData = () => {
     return data.map(({ ...item }) => ({
       ...item,
+      crest: <Avatar src={item.crest} size={64} />,
+      name: <Typography.Link onClick={() => console.log(item.id)}>{item.name}</Typography.Link>,
       key: item.id,
     }));
   };
 
   const columns = [
+    { title: "Img", dataIndex: "crest", key: "crest" },
     { title: "Teams", dataIndex: "name", key: "name" },
     { title: "Tag", dataIndex: "tla", key: "tla" },
     { title: "Founded", dataIndex: "founded", key: "founded" }
