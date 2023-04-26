@@ -16,7 +16,7 @@ export const getCompetitions = async () => {
 }
 
 export const getTeams = async () => {
-    const data: TeamProps = await ky.get(`${API_URL}/teams`, {
+    const data: { teams: TeamProps[] } = await ky.get(`${API_URL}/teams`, {
         headers: {
             "X-Auth-Token": import.meta.env.VITE_API_TOKEN
         }

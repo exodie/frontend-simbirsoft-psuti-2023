@@ -5,7 +5,7 @@ declare global {
      * For context.provider interfaces data props
      */
     type StoreContextProps = {
-        currentPage: "competitions" | "teams" | "matches" | "calendar";
+        currentPage: "competitions" | "teams" | "matches" | "calendar" | any;
     }
 
     type CurrentPageProps = "competitions" | "teams" | "matches" | "calendar";
