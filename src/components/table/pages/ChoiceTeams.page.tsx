@@ -4,7 +4,16 @@ import { useLocation, useNavigate } from "react-router-dom";
 
 // styles
 import { PageHeader } from "@ant-design/pro-layout";
-import { Avatar, Col, Descriptions, List, Row, Table, Tabs, Typography } from "antd";
+import {
+  Avatar,
+  Col,
+  Descriptions,
+  List,
+  Row,
+  Table,
+  Tabs,
+  Typography,
+} from "antd";
 
 // api
 import { getTeamsWithID } from "../../../api/api";
@@ -20,7 +29,7 @@ export const ChoiceTeam: FC = () => {
   const [data, setData] = useState<TeamProps>({} as TeamProps);
 
   const fetch = async () => {
-    const res = await getTeamsWithID(state.id);
+    const res = await getTeamsWithID(state.item.id);
 
     setData(res);
   };
@@ -94,10 +103,15 @@ export const ChoiceTeam: FC = () => {
     <>
       <PageHeader
         ghost={false}
-        onBack={() => navigate("/table/competitions")}
-        title={state.name}
-        subTitle={state.tla}
-        avatar={{ src: state.crest, size: 64 }}
+        onBack={() =>
+          navigate(`/table/choice/competition/${state.old.id}`, {
+            replace: true,
+            state: state.old,
+          })
+        }
+        title={state.item.name}
+        subTitle={state.item.tla}
+        avatar={{ src: state.item.crest, size: 64 }}
       >
         <Row justify="space-between" className="competition-choice_row">
           <Col flex="1" xs={24} md={24} lg={18} xl={20}>

@@ -5,6 +5,8 @@ import { useLocation, useNavigate } from "react-router-dom";
 // styles
 import { Descriptions, Avatar, Row, Col, Table, Typography } from "antd";
 import { PageHeader } from "@ant-design/pro-layout";
+
+// api
 import { getTeamsFromCompetitions } from "../../../api/api";
 
 /**
@@ -16,7 +18,13 @@ export const ChoiceCompetition: FC = () => {
   const navigate = useNavigate();
 
   const [data, setData] = useState<
-    Array<{ id: number; name: string; tla: string; crest: string; founded: number; }>
+    Array<{
+      id: number;
+      name: string;
+      tla: string;
+      crest: string;
+      founded: number;
+    }>
   >([]);
 
   const fetch = async () => {
@@ -24,15 +32,18 @@ export const ChoiceCompetition: FC = () => {
     const res = await getTeamsFromCompetitions(state.id);
 
     res.map((item) => {
-      setData((v) => [...v, ...[
-        {
-          id: item.id,
-          name: item.name,
-          tla: item.tla,
-          crest: item.crest,
-          founded: item.founded,
-        },
-      ]]);
+      setData((v) => [
+        ...v,
+        ...[
+          {
+            id: item.id,
+            name: item.name,
+            tla: item.tla,
+            crest: item.crest,
+            founded: item.founded,
+          },
+        ],
+      ]);
     });
   };
 
@@ -44,7 +55,18 @@ export const ChoiceCompetition: FC = () => {
     return data.map(({ ...item }) => ({
       ...item,
       crest: <Avatar src={item.crest} size={64} />,
-      name: <Typography.Link onClick={() => navigate(`/table/choice/team/${item.id}`, { replace: true, state: item })}>{item.name}</Typography.Link>,
+      name: (
+        <Typography.Link
+          onClick={() =>
+            navigate(`/table/choice/team/${item.id}`, {
+              replace: true,
+              state: { item: item, old: state },
+            })
+          }
+        >
+          {item.name}
+        </Typography.Link>
+      ),
       key: item.id,
     }));
   };
@@ -53,7 +75,7 @@ export const ChoiceCompetition: FC = () => {
     { title: "Img", dataIndex: "crest", key: "crest" },
     { title: "Teams", dataIndex: "name", key: "name" },
     { title: "Tag", dataIndex: "tla", key: "tla" },
-    { title: "Founded", dataIndex: "founded", key: "founded" }
+    { title: "Founded", dataIndex: "founded", key: "founded" },
   ];
 
   return (
