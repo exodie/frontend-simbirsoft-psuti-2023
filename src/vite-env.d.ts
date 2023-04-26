@@ -45,18 +45,30 @@ declare global {
      * Req. props data
      */
     type TeamProps = {
-        teams: [{
+        id: number;
+        name: string;
+        shortName: string;
+        tla: string;
+        crest: string;
+        address: string;
+        website: string;
+        founded: number;
+        clubColors: string;
+        venue: string;
+        runningCompetitions: [{
             id: number;
             name: string;
-            shortName: string;
-            tla: string;
-            crest: string;
-            address: string;
-            website: string;
-            founded: number;
-            clubColors: string;
-            venue: string;
+            code: string;
+            type: string;
+            emblem: string;
         }];
+        squad: [{
+            id: number;
+            name: string;
+            position: string;
+            dateOfBirth: string;
+            nationality: string;
+        }]
     }
 
     /**

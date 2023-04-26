@@ -22,7 +22,17 @@ export const getTeams = async () => {
         }
     }).json();
 
-    return data.teams;
+    return data;
+}
+
+export const getTeamsWithID = async (id: number) => {
+    const data: TeamProps = await ky.get(`${API_URL}/teams/${id}`, {
+        headers: {
+            "X-Auth-Token": import.meta.env.VITE_API_TOKEN
+        }
+    }).json();
+
+    return data;
 }
 
 export const getMatches = async () => {

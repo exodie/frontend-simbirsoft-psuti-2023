@@ -8,7 +8,6 @@ import "./styles/table.scss";
 import { CompetitionsTable } from "./components/Competitions.component";
 import { CommandsTable } from "./components/Commands.component";
 
-
 type Props = {
   type: "competitions" | "commands";
 };

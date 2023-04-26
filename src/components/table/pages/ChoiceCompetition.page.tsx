@@ -44,7 +44,7 @@ export const ChoiceCompetition: FC = () => {
     return data.map(({ ...item }) => ({
       ...item,
       crest: <Avatar src={item.crest} size={64} />,
-      name: <Typography.Link onClick={() => console.log(item.id)}>{item.name}</Typography.Link>,
+      name: <Typography.Link onClick={() => navigate(`/table/choice/team/${item.id}`, { replace: true, state: item })}>{item.name}</Typography.Link>,
       key: item.id,
     }));
   };
@@ -54,7 +54,6 @@ export const ChoiceCompetition: FC = () => {
     { title: "Teams", dataIndex: "name", key: "name" },
     { title: "Tag", dataIndex: "tla", key: "tla" },
     { title: "Founded", dataIndex: "founded", key: "founded" }
-
   ];
 
   return (

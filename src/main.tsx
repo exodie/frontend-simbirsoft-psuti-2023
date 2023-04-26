@@ -13,7 +13,8 @@ import "./index.scss";
 // routers
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { StoreProvider } from "./store/providers/store.provider.tsx";
-import { ChoiceCompetition } from "./components/table/pages/ChoiceCompetition.component.tsx";
+import { ChoiceCompetition } from "./components/table/pages/ChoiceCompetition.page.tsx";
+import { ChoiceTeam } from "./components/table/pages/ChoiceTeams.page.tsx";
 
 ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
   <React.StrictMode>
@@ -41,6 +42,7 @@ ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
             path="/table/choice/competition/:id"
             element={<ChoiceCompetition />}
           />
+          <Route path="/table/choice/team/:id" element={<ChoiceTeam />} />
         </Routes>
       </BrowserRouter>
     </StoreProvider>
