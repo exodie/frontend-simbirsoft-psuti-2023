@@ -5,17 +5,13 @@ import { FC } from "react";
 import { Typography } from "antd";
 import "./styles/navbar.scss";
 
-// store
-import { useStore } from "../../store/hooks/store.hook";
-
+// Хотел реализовать табы, не хватает времени
 export const Navbar: FC = () => {
-  const { data } = useStore();
-
   return (
     <nav className="navbar">
       <section className="navbar-navigation">
         <Typography.Title>
-          {data.currentPage}
+          Football API
         </Typography.Title>
       </section>
     </nav>

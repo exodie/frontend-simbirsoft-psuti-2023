@@ -52,7 +52,6 @@ export const CommandsTable: FC = () => {
                     replace: true,
                     state: item,
                   });
-                  console.log(item);
                 }}
                 hoverable
                 bordered={true}
